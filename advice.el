@@ -5,6 +5,10 @@
 ;;; Having gnupg around the build triggers Emacs to use it for package signature
 ;;; verification. This would not work anyway because the build sandbox does not
 ;;; have a properly configured user home and environment.
+(when noninteractive
+  (after! undo-tree
+    (global-undo-tree-mode -1)))
+
 (setq package-check-signature nil)
 
 (advice-add 'nix-straight-get-used-packages
